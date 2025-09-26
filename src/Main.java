@@ -1,3 +1,4 @@
+import java.lang.Math;
 public class Main {
 
 
@@ -212,8 +213,108 @@ public class Main {
 
 
         // ======= TU CÓDIGO AQUÍ =======
+        /* Plan: crear variables booleana para cada logro/ set de logros
+        Ejemplo: 2 bool menos5Min y hayDesconexion y esto sería para el logro
+        de ragequit
+        Para los distintos juegos se puede hacer un If que tenga dentro todos
+        los logros del juego correspondiente y que se checkee antes del resto
+        de los logros
+         */
+        //Variables
+        String juego = "Lol";
+        int kills = 0;
+        int muertes = 0;
+        int asistencias = 0;
+        int tiempoMin = 0;
+        int objetivos = 0;
+        int dmgDealt = 0;
+        int dmgRecieved = 0;
+        int oro = 0;
+        boolean desconexion = false;
 
-        
+        //Operaciones
+        double kda = (double) (kills + asistencias) / Math.max(1, muertes);
+
+        //Checkeo de logros
+        boolean rageQuit = (desconexion && (tiempoMin < 5));
+
+        //Logros
+
+        //AFK
+        if(muertes == 0 && kills == 0 && asistencias == 0 && tiempoMin <2){
+            System.out.println("Partida inválida: AFK");
+        }else{
+            //Ragequit, no entiendo super bien que hacer con el resto de "logros pro"
+            if(rageQuit){
+                System.out.println("Logro NEGATIVO: Rage Quit \uD83D\uDE20");
+                if( kda > 5){
+                    System.out.println("Debido a RQ, no obtuviste el logro de Jugador PRO");
+
+                }
+            }
+
+            //Logros de KDA
+            if(kda >= 1){
+                if(kda >= 5 && !rageQuit) {
+                    System.out.println("Jugador PRO");
+                }else if((3 <= kda) && (kda < 5)){
+                    System.out.println("Jugador BUENO");
+                }else if(1 <= kda && kda < 3){
+                    System.out.println("Jugador NORMAL");
+                }
+            }else{
+                System.out.println("Jugador NOOB");
+            }
+
+            //Logros básicos
+            if(kills >= 10){
+                System.out.println("Logro: Cazador experto \uD83C\uDFF9");
+            }
+            if(muertes == 0 && kills >= 5){
+                System.out.println("Logro: Intocable \uD83D\uDC51");
+            }
+            if(tiempoMin > 60){
+                System.out.println("Logro: Maratón gamer ⏱");
+            }
+            if(dmgDealt > dmgRecieved *2){
+                System.out.println("Logro: Dominio total \uD83D\uDCA5");
+            }
+            if(objetivos >= 3){
+                System.out.println("Logro: Objetivos de mapa \uD83C\uDFAF");
+            }
+
+            //Logros por juego
+            if(juego == "Fortnite"){
+                if(kills >= 15 && muertes <= 2){
+                    System.out.println("Victoria agresiva (Fortnite) \uD83D\uDD2B");
+                }
+                if(oro >= 2000){
+                    System.out.println("Ahorrista de V-Bucks (Fortnite) \uD83D\uDCB0");
+                }
+            }else if(juego == "Lol"){
+                if(objetivos >= 2 && asistencias >= 10){
+                    System.out.println("Shotcaller (LoL) \uD83D\uDDE3");
+                }
+                if(dmgDealt >= 30000 && muertes <= 3){
+                    System.out.println("Carry principal (LoL) \uD83D\uDEE1");
+                }
+            }else if(juego == "Minecraft"){
+                if(tiempoMin >= 45 && dmgRecieved == 0){
+                    System.out.println("Superviviente pacífico (MC) \uD83C\uDF3F");
+                }
+                if(objetivos >=5){
+                    System.out.println("Constructor incansable (MC) \uD83E\uDDF1");
+                }
+            }else if(juego == "Pokemon"){
+                if(kills >= 6 && dmgRecieved <= 1000){
+                    System.out.println("Entrenador maestro (PKMN) \uD83E\uDDE2");
+                }
+                if(asistencias >= 3){
+                    System.out.println("Apoyo del equipo (PKMN) \uD83E\uDD1D");
+                }
+            }
+        }
+
     }
 
 }
