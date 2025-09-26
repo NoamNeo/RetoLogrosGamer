@@ -221,22 +221,35 @@ public class Main {
         de los logros
          */
         //Variables
-        String juego = "Lol";
-        int kills = 0;
+        String juego = "Pokemon";
+        int kills = 7;
         int muertes = 0;
-        int asistencias = 0;
-        int tiempoMin = 0;
-        int objetivos = 0;
-        int dmgDealt = 0;
-        int dmgRecieved = 0;
-        int oro = 0;
-        boolean desconexion = false;
+        int asistencias = 4;
+        int tiempoMin = 3;
+        int objetivos = 2;
+        int dmgDealt = 5000;
+        int dmgRecieved = 800;
+        int oro = 800;
+        boolean desconexion = true;
 
         //Operaciones
         double kda = (double) (kills + asistencias) / Math.max(1, muertes);
 
         //Checkeo de logros
         boolean rageQuit = (desconexion && (tiempoMin < 5));
+
+        //Resumen de estadísticas
+        System.out.println("      ESTADÍSTICAS");
+        System.out.println("Partida de: " + juego);
+        System.out.println("Kills: " + kills);
+        System.out.println("Muertes: " + muertes);
+        System.out.println("Asistencias: " + asistencias);
+        System.out.println("Tiempo jugado: " + tiempoMin + " minutos");
+        System.out.println("Objetivos tomados: " + objetivos);
+        System.out.println("Daño hecho: " + dmgDealt);
+        System.out.println("Daño recibido: " + dmgRecieved);
+        System.out.println("Oro conseguido: " + oro);
+
 
         //Logros
 
@@ -245,6 +258,7 @@ public class Main {
             System.out.println("Partida inválida: AFK");
         }else{
             //Ragequit, no entiendo super bien que hacer con el resto de "logros pro"
+            System.out.println("KDA: " + kda);
             if(rageQuit){
                 System.out.println("Logro NEGATIVO: Rage Quit \uD83D\uDE20");
                 if( kda > 5){
