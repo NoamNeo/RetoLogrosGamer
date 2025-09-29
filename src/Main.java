@@ -232,6 +232,7 @@ public class Main {
         int dmgRecieved = 800;
         int oro = 800;
         boolean desconexion = true;
+        int achScore = 0;
 
         //Operaciones
         double kda = (double) (kills + asistencias) / Math.max(1, muertes);
@@ -272,10 +273,13 @@ public class Main {
             if (kda >= 1) {
                 if (kda >= 5 && !rageQuit) {
                     System.out.println("Jugador PRO");
+                    achScore = achScore +20;
                 } else if ((3 <= kda) && (kda < 5)) {
                     System.out.println("Jugador BUENO");
+                    achScore = achScore + 10;
                 } else if (1 <= kda && kda < 3) {
                     System.out.println("Jugador NORMAL");
+                    achScore = achScore + 10;
                 }
             } else {
                 System.out.println("Jugador NOOB");
@@ -284,51 +288,76 @@ public class Main {
             //Logros básicos
             if (kills >= 10) {
                 System.out.println("Logro: Cazador experto \uD83C\uDFF9");
+                achScore = achScore + 10;
             }
             if (muertes == 0 && kills >= 5) {
                 System.out.println("Logro: Intocable \uD83D\uDC51");
+                achScore = achScore + 10;
             }
             if (tiempoMin > 60) {
                 System.out.println("Logro: Maratón gamer ⏱");
+                achScore = achScore + 10;
             }
             if (dmgDealt > dmgRecieved * 2) {
                 System.out.println("Logro: Dominio total \uD83D\uDCA5");
+                achScore = achScore + 10;
             }
             if (objetivos >= 3) {
                 System.out.println("Logro: Objetivos de mapa \uD83C\uDFAF");
+                achScore = achScore + 10;
             }
 
             //Logros por juego
+            if((juego == "Fortnite" || juego == "Lol") && ((kills + asistencias) >= 26)){
+                System.out.println("Impacto masivo \uD83C\uDF2A");
+            }
             if (juego == "Fortnite") {
                 if (kills >= 15 && muertes <= 2) {
                     System.out.println("Victoria agresiva (Fortnite) \uD83D\uDD2B");
+                    achScore = achScore + 10;
                 }
                 if (oro >= 2000) {
                     System.out.println("Ahorrista de V-Bucks (Fortnite) \uD83D\uDCB0");
+                    achScore = achScore + 10;
                 }
             } else if (juego == "Lol") {
                 if (objetivos >= 2 && asistencias >= 10) {
                     System.out.println("Shotcaller (LoL) \uD83D\uDDE3");
+                    achScore = achScore + 10;
                 }
                 if (dmgDealt >= 30000 && muertes <= 3) {
                     System.out.println("Carry principal (LoL) \uD83D\uDEE1");
+                    achScore = achScore + 10;
                 }
             } else if (juego == "Minecraft") {
                 if (tiempoMin >= 45 && dmgRecieved == 0) {
                     System.out.println("Superviviente pacífico (MC) \uD83C\uDF3F");
+                    achScore = achScore + 10;
                 }
                 if (objetivos >= 5) {
                     System.out.println("Constructor incansable (MC) \uD83E\uDDF1");
+                    achScore = achScore + 10;
                 }
             } else if (juego == "Pokemon") {
                 if (kills >= 6 && dmgRecieved <= 1000) {
                     System.out.println("Entrenador maestro (PKMN) \uD83E\uDDE2");
+                    achScore = achScore + 10;
                 }
                 if (asistencias >= 3) {
                     System.out.println("Apoyo del equipo (PKMN) \uD83E\uDD1D");
+                    achScore = achScore + 10;
                 }
             }
+
+            //Logros extra
+            if(achScore >= 40 && !rageQuit){
+                System.out.println("MVP de la jornada \uD83C\uDFC6");
+            }
+            if(dmgRecieved == 0 && tiempoMin >= 30){
+                System.out.println("Perfect Defense \uD83E\uDDF1");
+            }
         }
+        System.out.println("Puntación de logros final: " + achScore);
 
     }
 
