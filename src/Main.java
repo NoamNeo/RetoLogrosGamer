@@ -1,4 +1,5 @@
 import java.lang.Math;
+
 public class Main {
 
 
@@ -254,76 +255,76 @@ public class Main {
         //Logros
 
         //AFK
-        if(muertes == 0 && kills == 0 && asistencias == 0 && tiempoMin <2){
+        if (muertes == 0 && kills == 0 && asistencias == 0 && tiempoMin < 2) {
             System.out.println("Partida inválida: AFK");
-        }else{
+        } else {
             //Ragequit, no entiendo super bien que hacer con el resto de "logros pro"
             System.out.println("KDA: " + kda);
-            if(rageQuit){
+            if (rageQuit) {
                 System.out.println("Logro NEGATIVO: Rage Quit \uD83D\uDE20");
-                if( kda > 5){
+                if (kda > 5) {
                     System.out.println("Debido a RQ, no obtuviste el logro de Jugador PRO");
 
                 }
             }
 
             //Logros de KDA
-            if(kda >= 1){
-                if(kda >= 5 && !rageQuit) {
+            if (kda >= 1) {
+                if (kda >= 5 && !rageQuit) {
                     System.out.println("Jugador PRO");
-                }else if((3 <= kda) && (kda < 5)){
+                } else if ((3 <= kda) && (kda < 5)) {
                     System.out.println("Jugador BUENO");
-                }else if(1 <= kda && kda < 3){
+                } else if (1 <= kda && kda < 3) {
                     System.out.println("Jugador NORMAL");
                 }
-            }else{
+            } else {
                 System.out.println("Jugador NOOB");
             }
 
             //Logros básicos
-            if(kills >= 10){
+            if (kills >= 10) {
                 System.out.println("Logro: Cazador experto \uD83C\uDFF9");
             }
-            if(muertes == 0 && kills >= 5){
+            if (muertes == 0 && kills >= 5) {
                 System.out.println("Logro: Intocable \uD83D\uDC51");
             }
-            if(tiempoMin > 60){
+            if (tiempoMin > 60) {
                 System.out.println("Logro: Maratón gamer ⏱");
             }
-            if(dmgDealt > dmgRecieved *2){
+            if (dmgDealt > dmgRecieved * 2) {
                 System.out.println("Logro: Dominio total \uD83D\uDCA5");
             }
-            if(objetivos >= 3){
+            if (objetivos >= 3) {
                 System.out.println("Logro: Objetivos de mapa \uD83C\uDFAF");
             }
 
             //Logros por juego
-            if(juego == "Fortnite"){
-                if(kills >= 15 && muertes <= 2){
+            if (juego == "Fortnite") {
+                if (kills >= 15 && muertes <= 2) {
                     System.out.println("Victoria agresiva (Fortnite) \uD83D\uDD2B");
                 }
-                if(oro >= 2000){
+                if (oro >= 2000) {
                     System.out.println("Ahorrista de V-Bucks (Fortnite) \uD83D\uDCB0");
                 }
-            }else if(juego == "Lol"){
-                if(objetivos >= 2 && asistencias >= 10){
+            } else if (juego == "Lol") {
+                if (objetivos >= 2 && asistencias >= 10) {
                     System.out.println("Shotcaller (LoL) \uD83D\uDDE3");
                 }
-                if(dmgDealt >= 30000 && muertes <= 3){
+                if (dmgDealt >= 30000 && muertes <= 3) {
                     System.out.println("Carry principal (LoL) \uD83D\uDEE1");
                 }
-            }else if(juego == "Minecraft"){
-                if(tiempoMin >= 45 && dmgRecieved == 0){
+            } else if (juego == "Minecraft") {
+                if (tiempoMin >= 45 && dmgRecieved == 0) {
                     System.out.println("Superviviente pacífico (MC) \uD83C\uDF3F");
                 }
-                if(objetivos >=5){
+                if (objetivos >= 5) {
                     System.out.println("Constructor incansable (MC) \uD83E\uDDF1");
                 }
-            }else if(juego == "Pokemon"){
-                if(kills >= 6 && dmgRecieved <= 1000){
+            } else if (juego == "Pokemon") {
+                if (kills >= 6 && dmgRecieved <= 1000) {
                     System.out.println("Entrenador maestro (PKMN) \uD83E\uDDE2");
                 }
-                if(asistencias >= 3){
+                if (asistencias >= 3) {
                     System.out.println("Apoyo del equipo (PKMN) \uD83E\uDD1D");
                 }
             }
